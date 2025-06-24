@@ -7,6 +7,7 @@ const inputEmail = document.getElementById('Email')
 const inputPromo = document.getElementById('Promo')
 const inputText = document.getElementById('Note')
 const formpreventivo = document.getElementById('formPreventivo')
+const PrezzoFinale = document.getElementById('PrezzoFinale')
 
 formpreventivo.addEventListener('submit', function(event) {
    event.preventDefault()
@@ -30,36 +31,42 @@ const codicePromo = [
    'POCIE24'
 ]
 
+// calcolo prezzobase e prezzo scontato 
 
 let prezzoLavoro = 0
 
 if (Lavoro === 'backend') {
    prezzoLavoro = 20.50
-   console.log(prezzoLavoro)
+   console.log('Prezzo ora Lavoro', prezzoLavoro)
 } else if (Lavoro === 'frontend') {
    prezzoLavoro = 15.30
-   console.log(prezzoLavoro)
-} else  {
+   console.log('Prezzo ora Lavoro',prezzoLavoro)
+} else if (Lavoro === 'analisi') {
    prezzoLavoro = 33.60
-   console.log(prezzoLavoro)
+   console.log('Prezzo ora Lavoro',prezzoLavoro)
 }
 
 
 const prezzoBase = prezzoLavoro * 10 
-console.log(prezzoBase)
-
-const prezzoScontato = (prezzoBase * 25) / 100
-
+console.log('Prezzo Base', prezzoBase)
+const sconto = (prezzoBase * 25) / 100
+const prezzoScontato = prezzoBase - sconto
 const index = codicePromo.indexOf(Promo)
+const prezzoOutputElement = PrezzoFinale.querySelector('.Prezzo')
 
 if (index === -1) {
    console.log('Codice non è Valido')
-
+   prezzoOutputElement.innerHTML = prezzoBase
+   alert(` 
+   ATTENZIONE!!! 
+   Codice Promo non valido
+   `)
 } else {
-   console.log(prezzoScontato)
    console.log('Codice valido')
+   console.log('Prezzo Scontato 25%', prezzoScontato)
+   // alert('Codice Valido')
+   prezzoOutputElement.innerHTML = prezzoScontato
 }
-
 
 
 })
