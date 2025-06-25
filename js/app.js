@@ -56,7 +56,7 @@ const prezzoOutputElement = PrezzoFinale.querySelector('.Prezzo')
 
 if (index === -1) {
    console.log('Codice non è Valido')
-   prezzoOutputElement.innerHTML = prezzoBase
+   prezzoOutputElement.innerHTML = prezzoBase.toFixed(2)
    alert(` 
    ATTENZIONE!!! 
    Codice Promo non valido
@@ -65,7 +65,7 @@ if (index === -1) {
    console.log('Codice valido')
    console.log('Prezzo Scontato 25%', prezzoScontato)
    // alert('Codice Valido')
-   prezzoOutputElement.innerHTML = prezzoScontato
+   prezzoOutputElement.innerHTML = prezzoScontato.toFixed(2)
 }
 
 
